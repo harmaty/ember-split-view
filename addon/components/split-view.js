@@ -48,6 +48,8 @@ export default Ember.Component.extend({
    */
   isVertical: true,
 
+  isOppositeAnchorSide: false,
+
   /**
    * @property {Number} splitPosition - the position of the split in pixels
    * @default 50
@@ -160,12 +162,23 @@ export default Ember.Component.extend({
     var leftOrTop = splits.objectAt(0);
     var rightOrBottom = splits.objectAt(1);
 
-    if(this.get('isVertical')) {
-      leftOrTop.set('anchorSide', 'right');
-      rightOrBottom.set('anchorSide', 'left');
+    if(this.get('isOppositeAnchorSide')) {
+      if(this.get('isVertical')) {
+        leftOrTop.set('anchorSide', 'left');
+        rightOrBottom.set('anchorSide', 'right');
+      } else {
+        leftOrTop.set('anchorSide', 'top');
+        rightOrBottom.set('anchorSide', 'bottom');
+      }
     } else {
-      leftOrTop.set('anchorSide', 'bottom');
-      rightOrBottom.set('anchorSide', 'top');
+      if(this.get('isVertical')) {
+        leftOrTop.set('anchorSide', 'right');
+        rightOrBottom.set('anchorSide', 'left');
+      } else {
+        leftOrTop.set('anchorSide', 'bottom');
+        rightOrBottom.set('anchorSide', 'top');
+      }
+
     }
   }),
 

@@ -1,6 +1,6 @@
 <div class="demo-tab">
-  {{#split-view isVertical=true class="splitViewVertical"}}
-    {{split-child class="border"}}
+  {{#split-view isVertical=true isOppositeAnchorSide=true class="splitViewVertical"}}
+    {{split-child class="border" minSize=400}}
     {{split-sash}}
     {{#split-child class="composite"}}
       {{#split-view isVertical=true}}
